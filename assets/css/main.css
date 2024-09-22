@@ -1123,6 +1123,55 @@ p {
     02.HEADER css 
 ===========================*/
 /*===== NAVBAR =====*/
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap; /* Ensure the navbar doesn't wrap */
+}
+
+.navbar-nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: nowrap; /* Prevent wrapping of navigation items */
+}
+
+.navbar-collapse .navbar-nav .nav-link {
+  font-family: 'Arial', sans-serif; /* Change font-family */
+  font-size: 16px; /* Adjust font size if needed */
+  display: flex;
+  justify-content: center; /* Center text horizontally */
+  align-items: center; /* Center text vertically */
+  height: 50px; /* Set height to ensure vertical centering */
+  text-align: center; /* Center text within each link */
+}
+
+/* Optionally, you can style other dropdown menu items */
+.navbar-collapse .dropdown-menu {
+  font-family: 'Arial', sans-serif; /* Ensure dropdown menu font matches */
+}
+
+.navbar-collapse .dropdown-item {
+  font-family: 'Arial', sans-serif; /* Change font-family for dropdown items */
+}
+
+.nav-item {
+  margin-left: 15px; /* Adjust spacing between nav items */
+}
+
+.navbar-brand img {
+  max-height: 3rem; /* Adjust logo size */
+  margin-right: 20px; /* Space between logo and nav items */
+}
+
+@media (max-width: 992px) {
+  .navbar {
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  }
+}
+
 .navbar-area {
   position: absolute;
   top: 0;
@@ -1130,6 +1179,7 @@ p {
   width: 100%;
   z-index: 99;
   transition: all 0.3s ease-out 0s;
+  padding-top: 20px;
 }
 
 .sticky {
@@ -1139,10 +1189,10 @@ p {
   box-shadow: 0px 20px 50px 0px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease-out 0s;
 }
-
+/* 
 .sticky .navbar {
-  padding: 0px 0;
-}
+  padding: 10px 0;
+} */
 
 .img-50 {
   max-width: 50%; /* Set the image size to 50% of its container */
@@ -1185,7 +1235,7 @@ p {
   border-radius: 5px;
   position: relative;
   transition: all 0.3s ease-out 0s;
-  padding: 20px 0;
+  padding-bottom: 20px;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -1208,6 +1258,20 @@ p {
   max-width: 180px;
 }
 
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .navbar-brand img {
+    max-width: 120px;
+  }
+  
+}
+
+@media (max-width: 767px) {
+  .navbar-brand img {
+    max-width: 120px;
+  }
+  
+}
+
 .navbar-toggler {
   padding: 0;
 }
@@ -1217,29 +1281,54 @@ p {
   box-shadow: none;
 }
 
-.navbar-toggler .toggler-icon {
-  width: 30px;
-  height: 2px;
-  background-color: #fff;
-  display: block;
-  margin: 5px 0;
+/* Toggler Button */
+.custom-toggler {
+  border: none; /* Remove default border */
+  background: transparent; /* Make the button background transparent */
+  padding: 10px;
+}
+
+/* Remove default Bootstrap icon */
+.custom-toggler .navbar-toggler-icon {
+  background-image: none;
   position: relative;
-  transition: all 0.3s ease-out 0s;
+  width: 30px; /* Width of the hamburger */
+  height: 2px; /* Height of the middle line */
+  background-color: #333; /* Color of the middle line */
+  display: inline-block;
+  transition: background-color 0.3s ease;
 }
 
-.navbar-toggler.active .toggler-icon:nth-of-type(1) {
-  transform: rotate(45deg);
-  top: 7px;
+/* Top and bottom lines */
+.custom-toggler .navbar-toggler-icon::before,
+.custom-toggler .navbar-toggler-icon::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 30px; /* Width of the hamburger lines */
+  height: 2px; /* Height of the hamburger lines */
+  background-color: #333; /* Color of the lines */
+  transition: all 0.3s ease;
 }
 
-.navbar-toggler.active .toggler-icon:nth-of-type(2) {
-  opacity: 0;
+/* Top line position */
+.custom-toggler .navbar-toggler-icon::before {
+  top: -8px; /* Position it above the middle line */
 }
 
-.navbar-toggler.active .toggler-icon:nth-of-type(3) {
-  transform: rotate(135deg);
-  top: -7px;
+/* Bottom line position */
+.custom-toggler .navbar-toggler-icon::after {
+  bottom: -8px; /* Position it below the middle line */
 }
+
+/* Optional hover effect: Change color when hovering over the button */
+.custom-toggler:hover .navbar-toggler-icon,
+.custom-toggler:hover .navbar-toggler-icon::before,
+.custom-toggler:hover .navbar-toggler-icon::after {
+  background-color: #333; /* Change to a custom color on hover */
+}
+
+
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .navbar-collapse {
@@ -1441,6 +1530,18 @@ p {
   display: none;
 }
 
+.navbar-nav .nav-item .nav-link {
+  color: #000; /* Default link color */
+  transition: color 0.3s ease; /* Smooth transition */
+}
+
+.navbar-nav .nav-item .nav-link:hover,
+.navbar-nav .nav-item .nav-link:focus,
+.navbar-nav .nav-item .nav-link:active {
+  color: #808080; /* Change color to gray when hovered or clicked */
+}
+
+
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .navbar-nav .sub-nav-toggler {
     display: block;
@@ -1490,24 +1591,58 @@ p {
 
 .hero-section .hero-content {
   text-align: center;
-  margin-top: 180px;
+  margin-top: 160px;
+}
+.hero-section .hero-content h1 {
+  font-family: 'Arial', sans-serif; /* Change font family */
+  font-size: 2.8 rem; /* Adjust size */
+  font-weight: bold; /* Change weight */
+  color: #333; /* Change color */
+  text-align: center; /* Align text center */
+}
+
+.hero-section .hero-content p {
+  font-family: 'Helvetica', sans-serif; /* Change font family */
+  font-size: 1.2rem; /* Adjust size */
+  font-weight: 300; /* Change weight for a lighter look */
+  color: #666; /* Adjust color */
+  line-height: 1.6; /* Adjust line height for readability */
+  text-align: center; /* Align text center */
 }
 
 .hero-section .hero-content h1 {
-  font-size: 60px;
-  margin-bottom: 35px;
-  color: #333;
+  margin-bottom: 30px;
+}
+
+.hero-section .hero-contentp {
+  margin-bottom: 40px;
+}
+
+.hero-img{
+  width: 50%;
+  padding: 10px 0px;
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {
   .hero-section .hero-content h1 {
     font-size: 55px;
   }
+
+  .hero-img{
+    width: 70%;
+    padding: 10px 0px;
+  }
+  
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .hero-section .hero-content h1 {
     font-size: 48px;
+  }
+
+  .hero-img{
+    width: 80%;
+    padding: 10px 0px;
   }
 }
 
@@ -1515,11 +1650,21 @@ p {
   .hero-section .hero-content h1 {
     font-size: 40px;
   }
+
+  .hero-img{
+    width: 80%;
+    padding: 10px 0px;
+  }
 }
 
 @media only screen and (min-width: 480px) and (max-width: 767px) {
   .hero-section .hero-content h1 {
     font-size: 45px;
+  }
+
+  .hero-img{
+    width: 80%;
+    padding: 15px 0px;
   }
 }
 
@@ -1533,9 +1678,7 @@ p {
   color: #333;
 }
 
-.hero-section .hero-img img {
-  width: 100%;
-}
+
 
 .service-section .service-content {
   margin-right: 70px;
@@ -1607,6 +1750,28 @@ p {
   width: 100%;
 }
 
+.about-section {
+  padding-top: 100px;
+}
+
+.service-section {
+  padding-top: 100px;
+}
+
+.contact-section {
+  padding-top: 40px;
+  margin-bottom: 100px;
+}
+
+.team-section {
+  padding-top: 100px;
+}
+
+.buy-section {
+  padding-top: 100px;
+  padding-bottom: 60px;
+}
+
 .about-section .about-content {
   padding-left: 75px;
 }
@@ -1615,12 +1780,51 @@ p {
   .about-section .about-content {
     padding-left: 50px;
   }
+  .about-section{
+    padding-top: 40px;
+  }
+
+  .service-section {
+    padding-top: 40px;
+  }
+  
+  .contact-section {
+    padding-top: 40px;
+  }
+
+  .team-section {
+    padding-top: 40px;
+  }
+
+  .buy-section {
+    padding-top: 20px;
+  }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .about-section .about-content {
     padding-left: 0;
     margin-top: 50px;
+  }
+
+  .about-section{
+    padding-top: 20px;
+  }
+
+  .service-section {
+    padding-top: 20px;
+  }
+  
+  .contact-section {
+    padding-top: 20px;
+  }
+
+  .team-section {
+    padding-top: 20px;
+  }
+
+  .buy-section {
+    padding-top: 20px;
   }
 }
 
@@ -1629,13 +1833,51 @@ p {
     padding-left: 0;
     margin-top: 50px;
   }
+
+  .about-section{
+    padding-top: 10px;
+  }
+
+  .service-section {
+    padding-top: 10px;
+  }
+  
+  .contact-section {
+    padding-top: 10px;
+  }
+
+  .team-section {
+    padding-top: 10px;
+  }
+
+  .buy-section {
+    padding-top: 1cqb;
+  }
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .about-section .about-content {
     padding-left: 0;
   }
+
+  .about-section{
+    padding-top: 5px;
+  }
+
+  .service-section {
+    padding-top: 5px;
+  }
+  
+  .contact-section {
+    padding-top: 5px;
+  }
+
+  .team-section {
+    padding-top: 5px;
+  }
 }
+
+
 
 .about-section .about-content .section-title h1 {
   margin-bottom: 35px;
@@ -1647,7 +1889,7 @@ p {
 
 .section-title h1 {
   font-family: 'Arial', sans-serif; /* Change font family */
-  font-size: 3.2rem; /* Adjust size */
+  font-size: 2.8 rem; /* Adjust size */
   font-weight: bold; /* Change weight */
   color: #333; /* Change color */
   text-align: center; /* Align text center */
@@ -1655,7 +1897,7 @@ p {
 
 .section-title p {
   font-family: 'Helvetica', sans-serif; /* Change font family */
-  font-size: 1.6rem; /* Adjust size */
+  font-size: 1.2rem; /* Adjust size */
   font-weight: 300; /* Change weight for a lighter look */
   color: #666; /* Adjust color */
   line-height: 1.6; /* Adjust line height for readability */
@@ -1777,8 +2019,35 @@ p {
   font-size: 1.6rem; /* Adjust heading size */
   font-weight: bold;
   margin-bottom: 10px;
+  padding: 0px;
 }
 
+.team-wrapper .single-team {
+  text-align: center; /* Centers content */
+  padding: 20px;
+  margin-bottom: 20px; /* Adds space between team members */
+  /* border: 1px solid #e0e0e0;  */
+  border-radius: 10px; /* Optional: Rounded corners */
+}
+
+.team-img img {
+  max-width: 400px; /* Adjust the image size */
+  width: 100%;
+  height: auto;
+  margin-bottom: 0px; /* Space below image */
+  padding-bottom: 0px;
+}
+
+.content {
+  margin-top: 0px;
+  padding: 0px;
+}
+
+@media (max-width: 768px) {
+  .team-wrapper .single-team {
+    margin-bottom: 30px;
+  }
+}
 
 .team-section .single-team {
   margin-bottom: 30px;
@@ -1794,7 +2063,7 @@ p {
 }
 
 .team-section .single-team .image img {
-  width: 100%;
+  width: 50%;
 }
 
 .team-section .single-team .content {
@@ -2134,26 +2403,27 @@ p {
 
 .social-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+  justify-content: center; /* Center the icons */
+  flex-wrap: wrap; /* Allow the icons to wrap to the next line */
+  gap: 20px; /* Space between the items */
+  padding: 20px 0;
 }
 
 .social-row {
   display: flex;
   justify-content: space-around;
-  width: 500px; /* Adjust width to control spacing */
+  width: 400px; /* Adjust width to control spacing */
 }
 
 .soc-item {
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   background-color: #fff;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: shadow effect */
 }
 
 .soc-item a {
@@ -2162,8 +2432,19 @@ p {
   align-items: center;
 }
 
+@media (max-width: 768px) {
+  .social-container {
+    grid-template-columns: repeat(3, 1fr); /* 3 icons per row on mobile */
+  }
+  
+  .social-container:nth-child(n+4) {
+    grid-column: span 2; /* Ensure the last two icons are centered */
+  }
+}
+
 .mbr-iconfont {
   font-size: 32px;
+  color: #0066ff; /* Color for the icons */
 }
 
 .soc-item:hover {
@@ -2209,3 +2490,40 @@ p {
   font-size: 1.1rem; /* Adjust font size inside the accordion content */
 }
 
+/* Default layout for larger screens */
+.countdown-timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap; /* Ensure the countdown stays in one row */
+}
+
+/* Styling for larger screens */
+.countdown-timer .col-xs-2,
+.countdown-timer .col-sm-2 {
+  margin-right: 20px; /* Add spacing between countdown items */
+}
+
+/* Remove the last margin-right */
+.countdown-timer .col-xs-2:last-child,
+.countdown-timer .col-sm-2:last-child {
+  margin-right: 0;
+}
+
+/* Mobile version - Make the countdown smaller */
+@media (max-width: 768px) {
+  .countdown-timer .col-xs-2,
+  .countdown-timer .col-sm-2 {
+    margin-right: 10px; /* Reduce the margin for a more compact layout */
+    flex-basis: auto; /* Allow the items to shrink naturally */
+    max-width: none; /* Ensure the items take up their natural width */
+  }
+
+  .countdown-timer .display-1 {
+    font-size: 2rem; /* Reduce the size of the numbers */
+  }
+
+  .countdown-timer .label {
+    font-size: 1rem; /* Reduce the size of the labels */
+  }
+}
