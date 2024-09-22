@@ -1674,8 +1674,10 @@ p {
 }
 
 .hero-section .hero-content a.main-btn {
-  background: #fff;
-  color: #333;
+  background: #FFDC35;
+  color: #0066CC;
+  font-size: 30px;
+  
 }
 
 
@@ -2009,15 +2011,17 @@ p {
 }
 
 .team-wrapper p {
-  font-size: 1.1rem; /* Adjust the font size */
-  line-height: 1.6; /* Adjust the line height for better readability */
-  color: #333; /* Optional: Change text color if needed */
-  margin-bottom: 15px; /* Adjust spacing between paragraphs */
+  font-family: 'Helvetica', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6; 
+  font-weight: 300;
+  color: #333; 
+  margin-bottom: 15px; 
 }
 
 .team-wrapper h4 {
+  font-family: 'Helvetica', sans-serif;
   font-size: 1.6rem; /* Adjust heading size */
-  font-weight: bold;
   margin-bottom: 10px;
   padding: 0px;
 }
@@ -2319,6 +2323,11 @@ p {
   background: radial-gradient(#538bec 0%, #1058d6 100%);
 }
 
+.footer p{
+  color: #fff;
+  font-size: 1rem;
+}
+
 .footer .subscribe-wrapper {
   padding-bottom: 60px;
 }
@@ -2527,3 +2536,4 @@ p {
     font-size: 1rem; /* Reduce the size of the labels */
   }
 }
+
