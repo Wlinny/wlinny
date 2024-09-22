@@ -1,5 +1,3 @@
-
-
 .product-section img {
   width: 70%;
   margin: 10px 0;
@@ -22,6 +20,19 @@
   width: 70%;
   margin: 5px 0;
 }
+@media (max-width: 767px) {
+  .product-main-section img {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  .product-main-section img {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
 
 .product-main-section p {
   margin-top: 35px;
@@ -32,6 +43,7 @@
   width: 100%;
   margin: 5px 0;
 }
+
 
 .buy-section a {
   font-family: 'Helvetica', sans-serif;
@@ -44,3 +56,5 @@
   font-weight: 500;
   margin-top: 10px;
 }
+
+
